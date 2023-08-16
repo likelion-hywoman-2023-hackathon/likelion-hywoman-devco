@@ -1,0 +1,60 @@
+{% extends 'menuBar.html' %}
+{% block content %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/manual_scrap.css' %}">
+        <div class="nav_bar">
+        </div>
+        <div class="header">
+            <h4>{{type}} 시 행동요령</h4>
+            {% if user.is_authenticated %}
+                <div class="scrap-button">
+                <form action="{% url 'manual_view' card_id=card.id %}" method="post" id="scrap_form">
+                    {% csrf_token %}
+                    {% if user_scrap %}
+                        {% for us in user_scrap %}
+                            {% if us.card.title in card.title %}
+                                <input type="checkbox" id="scrap-checkbox" name="scrap" onclick="toggleStar()" checked>
+                            {% else %}
+                                <input type="checkbox" id="scrap-checkbox" name="scrap" onclick="toggleStar()">
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <input type="checkbox" id="scrap-checkbox" name="scrap" onclick="toggleStar()">
+                    {% endif %}
+                    <label for="scrap-checkbox">
+                        <span class="scrap-text">스크랩</span>
+                        <span class="star">&#9734;</span>
+                        <span class="filled-star">&#9733;</span>
+                    </label>
+                </form>
+                </div>
+            {% endif %}
+        </div>
+        <img src="{% static 'image/line.svg' %}" alt="">
+        <div class="content">
+            {% for behavior in behaviors %}
+            <div class="content1">
+                <h4>{{behavior.title_nm}}</h4>
+                <div class="slide-container">
+                    <h2 class="slide-title"></h2>
+                    <ul class="slide">
+                        {% for image in behavior.image_src %}
+                        <li>
+                            <img src="/{{ image }}" alt="" />
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="btn-container">
+                        <button class="prev-btn">prev</button>
+                        <button class="next-btn">next</button>
+                    </div>
+                </div>
+                <div class="text">
+                    <p>{{behavior.description|linebreaksbr }}</p>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <script src="{% static 'js/manual_scrap.js' %}"></script>
+{% endblock %}

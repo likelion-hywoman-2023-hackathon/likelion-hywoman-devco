@@ -1,0 +1,129 @@
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    height: 100vh;
+}
+
+.container {
+    height: 100vh;
+    /*추가*/
+    height: -webkit-fill-available;
+    /*추가*/
+    height: fill-available;
+    /*추가*/
+    background-color: #FFF;
+    font-family: 'GmarketSansMedium';
+    overflow: hidden;
+}
+
+.nav-bar {
+    width: 375px;
+    height: 50px;
+    background: #FFF;
+
+}
+
+.header>h3 {
+    color: #000;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    font-weight: bold;
+    margin-left: 30px;
+    
+}
+
+
+.section1>p {
+    color: #878080;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 30px;
+    font-weight: bolder;
+    transform: translateY(20px);
+}
+
+.section2>p {
+    color: #878080;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 30px;
+    font-weight: bolder;
+    margin-bottom: 150px;
+    transform: translateY(20px);
+}
+
+
+
+
+/* 버튼 */
+
+
+.button button {
+    width: 298px;
+    height: 65px;
+    margin-top: 250px;
+    border-radius: 10px;
+    background: #94C9FA;
+    box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.25);
+    margin-left: 38px;
+    border: none;
+    text-decoration: none;
+    color: #FFF;
+    font-family: 'GmarketSansMedium';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+
+}
+
+
+
+/* 여긴 미디어쿼리 */
+@media screen and (max-height: 740px) {
+    .container {
+        height: 100%;
+        padding-bottom: 0px;
+
+    }
+
+    .button button {
+        width: 298px;
+        height: 65px;
+        margin-top: 140px;
+        border-radius: 10px;
+        background: #94C9FA;
+        box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.25);
+        margin-left: 38px;
+        border: none;
+        text-decoration: none;
+        color: #FFF;
+        font-family: 'GmarketSansMedium';
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+
+
+    }
+
+}
+
+@media screen and (max-width: 300px) {
+    .container {
+        height: 100%;
+        padding-bottom: 200px;
+    }
+}

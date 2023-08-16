@@ -1,0 +1,105 @@
+{% extends 'menuBar.html' %}
+{% block content %}
+{% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/actionTips.css' %}">
+    <div class="nav_bar">
+        <p>행동요령</p>
+    </div>
+        <div class="slide-container">
+            <ul class="slide">
+                <li>
+                    <a href="{% url 'cardnews_view' card_id=2 %}"><img src="{% static 'image/finedust-preview.png' %}" alt="" /></a>
+
+                </li>
+                <li>
+                    <a href="{% url 'cardnews_view' card_id=3 %}"><img src="{% static 'image/heatWave-preview.png' %}" alt="" /></a>
+
+                </li>
+                <li>
+                    <a href="{% url 'cardnews_view' card_id=4 %}"><img src="{% static 'image/typhoon-preview.png' %}" alt="" /></a>
+
+                </li>
+            </ul>
+            <div class="btn-container">
+                <button class="prev-btn">
+                    <img src="{% static 'image/newsArrow.png' %}" alt="뒤로가기" class="prev">
+                </button>
+                <button class="next-btn">
+                    <img src="{% static 'image/newsArrow.png' %}" alt="앞으로 가기">
+                </button>
+            </div>
+        </div>
+
+        <div class="tab_container">
+            <ul class="tab_menu">
+                <li data-tab="tab_1"><a href="{% url 'actions' %}">전체</a></li>
+                <li class="menuLine"></li>
+                <li data-tab="tab_2"><a href="{% url 'manuals' %}">메뉴얼</a></li>
+                <li class="menuLine"></li>
+                <li data-tab="tab_3" class="current"><a href="{% url 'cardNews' %}">카드뉴스</a></li>
+            </ul>
+
+
+
+            <div id="tab_3" class="tab_content current">
+                <div class="search_container">
+                    <label>
+                        <input type="text" id="search" onkeyup="filter()" placeholder="검색어를 입력해주세요." />
+                        <hr class="search_line">
+                    </label>
+                </div>
+                <div class="tab_menual_container">
+                    <div class="listInner">
+                        <div class="tab_cardnews_box">
+                            <a href="{% url 'cardnews_view' card_id=7 %}">
+                                <div class="cd-image">
+                                    <img class="hashtag" src="{% static 'image/floodedCar_000.png' %}" alt="">
+                                </div>
+                                <div class="cd-hashtag">
+                                    <p class="p-cardnews">#카드뉴스</p>
+                                </div>
+                                <div class="cd-text">
+                                    <p class="title">침수차량 탈출법</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="listInner">
+                        <div class="tab_cardnews_box">
+                            <a href="{% url 'cardnews_view' card_id=9 %}">
+                                <div class="cd-image">
+                                    <img class="hashtag" src="{% static 'image/handWash_000.png' %}" alt="">
+                                </div>
+                                <div class="cd-hashtag">
+                                    <p class="p-cardnews">#카드뉴스</p>
+                                </div>
+                                <div class="cd-text">
+                                    <p class="title">감염병 예방</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="listInner">
+                        <div class="tab_cardnews_box">
+                            <a href="{% url 'cardnews_view' card_id=8 %}">
+                                <div class="cd-image">
+                                    <img class="hashtag" src="{% static 'image/summerLeisure_000.png' %}" alt="">
+                                </div>
+                                <div class="cd-hashtag">
+                                    <p class="p-cardnews">#카드뉴스</p>
+                                </div>
+                                <div class="cd-text">
+                                    <p class="title">여름철 안전규칙</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'js/actionTips_search.js' %}"></script>
+    <script src="{% static 'js/cardnews_detail.js' %}"></script>
+    <script src="{% static 'js/actionTips_carousel.js' %}"></script>
+{% endblock %}

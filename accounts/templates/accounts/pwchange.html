@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'image/logo.png' %}">
+    <link rel="stylesheet" href="{% static 'css/menuBar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pwchange.css' %}">
+    <title>피해피해</title>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-bar"></div>
+       
+        <div class="header">
+            <h3>비밀번호 변경 완료</h3>
+        </div>
+        <div class="section1">
+            <p>비밀번호 변경이 완료되었습니다. <br><br>다시 로그인 해주세요.</p>
+        </div>
+        <a href="{% url 'accounts:login' %}">
+            <div class="button">
+                <button type="submit">로그인</button>
+            </div>
+        </a>
+    </div>
+</body>
+</html>

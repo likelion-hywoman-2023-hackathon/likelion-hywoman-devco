@@ -1,0 +1,111 @@
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+} 
+
+* {
+    font-family: 'GmarketSansMedium';
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.container {
+    height: 100vh;
+    height: -webkit-fil-avaliable;
+    height: fill-available;
+   
+
+}
+
+.nav-bar {
+    width: 375px;
+    height: 50px;
+    background: #FFF;
+    
+}
+.back {
+    width: 25.15px;
+    height: 23.04px;
+    margin-bottom: 12px;
+    margin-left: 40.92px;
+
+}
+
+h3 {
+    color: #2A2A2A;
+    font-family: 'GmarketSansMedium';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+    margin-left: 37px;
+
+}
+
+/* 아이디,이메일 */
+form>p {
+    color: #000;
+    font-family: 'GmarketSansMedium';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 37px;
+    margin-top: 30px;
+}
+
+/* input  */
+form>input {
+    width: 300px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 1px solid #989898;
+    background: #FFF;
+    margin-left: 37px;
+    margin-top: 5px;
+    
+}
+
+
+
+/* 찾기 버튼 */
+.button button {
+    width: 298px;
+    height: 65px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #94C9FA;
+    box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.25);
+    margin-left: 38px;
+    margin-top: 125px;
+    margin-bottom: 251px;
+    border: none;
+    color: #FFF;
+    font-family: 'GmarketSansMedium';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+}
+
+/* @media screen and (max-height:740px){
+    .container{
+        height: 100%;
+        padding-bottom: 150px;
+    }
+} */
+
+@media screen and (max-width:300px){
+    .container{
+        height: 100%;
+        padding-bottom: 200px;
+    }
+}

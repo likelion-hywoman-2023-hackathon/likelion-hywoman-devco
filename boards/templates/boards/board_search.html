@@ -1,0 +1,17 @@
+{% extends 'menuBar.html' %}
+{% block content %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/communitySearch.css' %}">
+        <form method="post" class="search" name="communitySearch">
+                <button type="submit" class="btn">
+                    <img src="{% static 'image/glass.png' %}" alt="돋보기">
+                </button>
+
+                <textarea name="searchText" id="searchText" row="0" placeholder="검색어를 입력해주세요"
+                wrap="off"></textarea>
+        </form>
+
+        <p class="content">검색어를 입력해 원하는 글을 찾아보세요</p>
+
+        <img id="picture" src="{% static 'image/community.png' %}" alt="커뮤니티 아이콘 사진">
+{% endblock %}

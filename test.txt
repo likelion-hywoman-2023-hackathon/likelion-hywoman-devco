@@ -1,0 +1,9 @@
+
+깔아야하는 것들
+
+pip install python-dotenv
+pip install django==3.2
+pip install pillow
+pip install django-allauth
+pip install pyproj
+pip install django-cleanup

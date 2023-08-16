@@ -1,0 +1,86 @@
+{% extends 'menuBar.html' %}
+{% block content %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/communityList.css' %}">
+        <div class="nav_bar">
+        <p>지역별 커뮤니티</p>
+      </div>
+        <div class="hd"> <!-- 커뮤니티 상단 -->
+            <form method="GET" class="areaSelect" action="{% url 'board_list' %}" > <!-- select box form으로 묶기-->
+                <select name="region" id="area" onchange="this.form.submit()" required>
+                    <option value="" disabled selected>지역 설정</option>
+                    {% for value, display_text in region_choices %}
+                    <option value="{{ value }}" {% if value == selected_region %}selected{% endif %}>{{ display_text }}</option>
+                    {% endfor %}
+                </select>
+            </form>
+            <div class="hdIcons"> <!-- 아이콘 부분 -->
+                <!-- <div>
+                    <a href="/">
+                        <img src="{% static 'image/glass.png' %}" class="search" alt="돋보기">
+                    </a>
+                </div> -->
+                {% if user.is_authenticated %}
+                <div>
+                    <a href="{% url 'board_post' %}">
+                        <img src="{% static 'image/pencil.png' %}" class="change" alt="글쓰기">
+                    </a>
+                </div>
+                <div>
+                    <a href="{% url 'accounts:my_page' pk=user.id %}">
+                        <img src="{{ user.user_image.url }}" class="profile" alt="프로필">
+                    </a>
+                </div>
+                {% else %}
+                <div class="login">
+                    <a href="{% url 'accounts:login' %}">
+                        로그인
+                    </a>
+                </div>
+                {% endif %}
+            </div> <!-- 아이콘 부분 끝 -->
+        </div> <!-- 상단 끝 -->
+
+        <div class="title"> <!--지역 소식 둥근 부분-->
+            <a href="{% url 'board_list' %}">전체 보기</a>
+        </div>
+
+        <div class="alert"> ※ 게시글, 댓글은 3회 신고를 받으면 삭제됩니다.</div>
+
+        <hr class="line"> <!-- 선 긋기 -->
+
+        {% for board in boards %}
+        <div class="content2"> <!--컨텐츠-->
+                <div class="userInfo">
+                    <img src="{{ board.user.user_image.url }}" alt="프로필">
+                    <p class="nickName">{{ board.user.username }}</p>
+                    {% if user.is_authenticated %}
+                        <button type="button" class="dotButton" onclick="appearButton(this)">
+                            <img src="{% static 'image/dot.png' %}" alt="">
+                        </button>
+                        {% if user.username != board.user.username %}
+                        <div class="send">
+                            <a href="{% url 'board_report' pk=board.id %}">
+                                <button type="submit" class="reportBtn">신고</button>
+                            </a>
+                        </div>
+                        {% else %}
+                            <form method="post" class="send" action="{% url 'board_delete' pk=board.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="reportBtn">삭제</button>
+                            </form>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            <a href="{% url 'board_detail' pk=board.pk %}"> <!--글 쪽을 누르면 글 상세보기 페이지로 넘어감-->
+                <p class="text">
+                    {{ board.description }}
+                </p>
+                <img src="{% static 'image/comment.png' %}" alt="" class="comment">
+            </a>
+        </div>
+
+        <div class="lineBox"></div> <!--구분하기 위한 선-->
+        {% endfor %}
+    <script src="{% static 'js/communityList.js' %}"></script>
+{% endblock %}

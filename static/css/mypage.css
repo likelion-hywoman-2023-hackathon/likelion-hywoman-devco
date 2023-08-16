@@ -1,0 +1,447 @@
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+} 
+
+* {
+    font-family: 'GmarketSansMedium';
+}
+
+body {
+    /* margin: 0;
+    padding: 0; */
+    height: 100vh;
+}
+
+.container {
+    height: 100vh;
+    height: -webkit-fill-available;
+    height: fill-available;
+
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    z-index: 0;
+    background-color: #FFF;
+    /* border: 1px solid #989898; */
+
+}
+
+.nav-bar {
+    width: 375px;
+    height: 50px;
+    background: #FFF;
+
+
+}
+
+.nav_bar > p {
+    font-size: 1px;
+    padding: 0;
+    margin: 15px 0px 15px 0px;
+    font-weight: bold;
+    text-align: center;
+    justify-items: center;
+    /* border: 1px solid gray; */
+}
+
+/* 프로필 */
+
+#user {
+    width: 168px;
+    height: 168px;
+    margin-top: 22px;
+    margin-left: 103px;
+    margin-right: 104px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* 닉네임 */
+.name {
+    /* display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row; */
+    /* justify-content: space-between; */
+    /* text-align: center; */
+    gap: 5px;
+    /* border: 1px solid blue; */
+    justify-content: center;
+    display: inline-flex;
+
+}
+
+/* 닉네임 */
+.nickname {
+    /* width: 130px; */
+    height: 26px;
+    flex-shrink: 0;
+    /* width: 55px; */
+    /* height: 26px; */
+    flex-shrink: 0;
+    /* margin-left: 105px; */
+    margin-top: 17px;
+    color: #000;
+    text-align: center;
+    /* font-family: Inter; */
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    /* border: 1px solid red; */
+    margin-left: 20px;
+}
+
+/* 연필 */
+.name-1>img {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 17px;
+    /* margin-right: 80px; */
+  
+}
+
+/* 작대기 부분 */
+#name-2 {
+    margin-top: -6px;
+
+}
+
+/* email */
+.email {
+    /* width: 180px; */
+    height: 23px;
+		/*
+    margin-left: 100px;
+    margin-right: 104px;
+		*/
+    margin-bottom: 16px;
+  
+    text-align: center;
+}
+
+/* email */
+/* .email {
+    width: 180px;
+    height: 23px;
+    margin-left: 100px;
+    margin-right: 104px;
+    margin-bottom: 16px;
+  
+    text-align: center; 
+    
+   
+
+} */
+
+.email>p {
+    font-family: 'GmarketSansMedium';
+    color: #878080;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 0px;
+    /* border: 1px solid red; */
+
+}
+
+#line {
+    margin-top: 14px;
+
+}
+
+/* 마이 페이지 기능 */
+.section {
+    width: 162px;
+    height: 210px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    margin-left: 36px;
+    margin-right: 177px;
+
+}
+
+
+.section1,
+.section2,
+.section3 {
+    display: flex;
+}
+
+.section1>a,
+.section2>a,
+.section3>a {
+    text-decoration: none;
+    color: #878080;
+}
+
+
+.find-location-text{
+    color: #878080;
+}
+
+/* 기능-아이콘 */
+
+.section img {
+
+    width: 25px;
+    margin-right: 13px;
+}
+
+.retire {
+    color: #BEBEBE;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 18px;
+    margin-top: 22px;
+}
+
+/* 하단바 */
+#ft {
+    margin: 0;
+    padding: 0;
+    z-index: 30;
+    background-color: white;
+    width: 375px;
+    height: 54px;
+    position: fixed;
+    bottom: 0;
+
+    border-radius: 0.625rem 0.625rem 0rem 0rem;
+    background: #FFF;
+    box-shadow: 0px -4px 8px 0px rgba(162, 162, 162, 0.25);
+}
+
+.ftIcons {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.back>a>img {
+    width: 25x;
+    height: 23px;
+    margin: 15px 0px;
+}
+
+.home>a>img {
+    width: 31px;
+    height: 31px;
+    margin: 11px 0px;
+}
+
+.user>a>img {
+    width: 27px;
+    height: 27px;
+    margin: 13px 0px;
+}
+
+/* 팝업창 */
+.modal {
+    animation: fadeInDown 1s;
+    width: 375px;
+    height: 100%;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0.4);
+    z-index: 999;
+    margin: 0 auto;
+}
+
+.modal.active {
+    display: block;
+}
+
+.modal-content {
+    box-shadow: 1px 5px 7px 0px rgba(130, 130, 130, 0.25);
+    border-radius: 10px;
+    background-color: white;
+    position: absolute;
+    top: 35%;
+    left: 0;
+    right: 0;
+    width: 290px;
+    height: 180px;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    z-index: 999;
+    border: 1px solid #EDEDED;
+}
+
+#location-info { /*위치 정보를 가져오시겠습니까?*/
+    color: black;
+    font-size: 16px;
+    margin-top: 23px;
+}
+
+.title { /*타이틀*/
+    margin-top: 18px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+
+#popup-buttons {
+    margin-top: 25px;
+}
+
+.close-button {
+    display: block;
+    /* text-align: center; */
+    background-color: #E8E8E8;
+    margin-right: 53px;
+    text-decoration: none;
+    float: right;
+}
+
+.yesBtn {
+    float: left;
+    margin-left: 50px;
+    background-color: #ABD4FA;
+}
+
+/* .close-button > p {
+    padding: 0;
+    margin: 5px 15px 7px 15px;
+} */
+
+/* .yesBtn, #deny-location, #confirm-btn {
+    display: block;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    border-radius: 10px;
+    width: 87px;
+    height: 33px;
+    border: none;
+    cursor: pointer;
+    color: black;
+    float: left;
+    margin: 0px 5px;
+} */
+
+/* #deny-location {
+    float: right;
+} */
+
+/* .delete_button {
+    background-color: #ABD4FA;
+    float: right;
+    margin: 0px 80px 0px 0px;
+    padding: 0;
+} */
+
+.close-button, .yesBtn, .okay-button { /*버튼 꾸미기*/
+    font-size: 17px;
+    border-radius: 10px;
+    width: 80px;
+    height: 33px;
+    border: none;
+    cursor: pointer;
+    color: black;
+}
+/*여기까지가 허용/거부에 대한 부분*/
+
+/*위치 알려주는 부분*/
+.okay-button {
+    background-color: #ABD4FA;
+    margin-top: 10px; /*수정 7->10*/
+    padding-top: 3px; /*추가*/
+}
+
+#result-info {
+    box-sizing: border-box;
+    font-size: 15px;
+    margin: 0;
+    line-height: 1.5;
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, -10%, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translateZ(0);
+    }
+}
+
+/* 로그아웃 버튼 */
+
+/* .button > button > a {
+    text-decoration: none;
+    color: #FFF;
+}
+
+.button button {
+    width: 298px;
+    height: 65px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #94C9FA;
+    box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.25);
+    margin-left: 38px;
+    transform: translateY(-20px);
+    border: none;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}; */
+
+
+
+.btn{
+    
+    text-decoration: none;
+    text-align: center;
+    /* border: 1px solid green; */
+    height: 25px;
+    background: #94C9FA;
+    box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.25);
+    margin-left: 62px;
+    margin-right: 62px;
+    border-radius: 10px;
+    color: #FFF;
+    font-size: 19px;
+    padding: 18px 55px;
+    display: block;
+    margin-top: 30px;
+ 
+    
+    
+}
+
+/*추가*/
+@media screen and (max-height: 740px) {
+    .container {
+        height: 100%;
+        padding-bottom: 150px;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .container {
+        height: 100%;
+        padding-bottom: 200px;
+    }
+}

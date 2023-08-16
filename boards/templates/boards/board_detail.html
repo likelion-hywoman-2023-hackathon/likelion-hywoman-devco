@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>피해피해</title>
+    <link rel="stylesheet" href="{% static 'css/communityPost.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="hd"> <!--윗(상단) 부분-->
+            <div class="title">지역 소식</div>
+        </div> <!--윗(상단) 부분 끝-->
+
+        <div class="lineBox"></div> <!--구분하기 위한 선-->
+
+        <div class="post"> <!--게시글 부분-->
+            <div class="postHd">
+                <div class="userInfo">
+                    <img src="{{ board.user.user_image.url }}" alt="프로필">
+                    <p class="nickName">{{ board.user.username }}</p>
+                    {% if board.user == request.user %}
+                    <a href="{% url 'board_update' pk=board.pk %}">
+                        <button type="submit" class="edit">수정</button>
+                    </a>
+                    <button class="delete" id="open-modal">삭제</button>
+                    {% endif %}
+                </div>
+            </div>
+
+            <p class="text">
+                {{ board.description }}
+            </p>
+            {% if board.info_image %}
+            <img src="{{ board.info_image.url }}" alt="홍수 사진">
+            {% endif %}
+        </div> <!--게시글 부분 끝-->
+
+        <!--모달창-->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <p>글을 삭제하시겠습니까?</p>
+                <a href="#" class="close-button" id="closePopup"><p>아니오</p></a>
+                <a href="{% url 'board_delete' pk=board.id %}">
+                    <form class="yesBtn" method="post">
+                        <button type="button" class="delete_button">네</button>
+                    </form>
+                </a>
+            </div>
+        </div>
+
+        {% if user.is_authenticated %}
+        <div class="comment">
+            <img src="{% static 'image/comment.png' %}" alt="">
+            <p>댓글 작성</p>
+        </div>
+
+        <hr class="line"> <!--선 긋기-->
+
+        <form method="post" action="{% url 'comment_create' pk=board.pk %}" enctype="multipart/form-data"> <!--댓글 달기 -->
+            {% csrf_token %}
+            <input type="hidden" name="username" value="{{ user.username }}" />
+            <textarea name="description" rows="0" id="commentText" maxlength="150" oninput="maxLengthCheck(this)"></textarea>
+            <div class="border">
+                <button type="submit" id="stop">등록</button>
+                <div id="charCount">(0 / 150)</div> <!--글자 수 세기-->
+                <p id="alertText">글을 작성해주세요!</p>
+            </div>
+        </form> <!--댓글 달기 끝-->
+        {% endif %}
+        {% for comment in board.comment_set.all %}
+        <div class="comments"> <!--댓글들 부분-->
+            <div class="commentsHd">
+                <div class="commentsUser">
+                    <img src="{{ comment.user.user_image.url }}" alt="">
+                    <p class="commentsName">{{ comment.user.username }}</p>
+                    {% if board.user == comment.user %}
+                    <p class="commentsTime">( 글쓴이 )</p>
+                    {% endif %}
+                </div>
+            </div>
+                {% if user.is_authenticated %}
+                <button type="submit" class="commentsDots" onclick="appearButton(this)">
+                    <img src="{% static 'image/dot.png' %}" alt="">
+                </button>
+                
+                {% if comment.user != request.user %}
+                <div class="send">
+                    <a href="{% url 'comment_report' board.id comment.id %}">
+                        <button type="submit" class="reportBtn">신고</button>
+                    </a>
+                </div>
+                {% else %}
+                <div class="send">
+                    <a href="{% url 'comment_delete' board.id comment.id %}">
+                        <button type="submit" class="reportBtn">삭제</button>
+                    </a>
+                </div>
+                {% endif %}
+            {% endif %}
+            <p class="commentsText">
+                {{ comment.description }}
+            </p>
+        </div>
+        <hr class="line"> <!--선 긋기-->
+        {% endfor %}
+        <div id="ft"> <!-- 메뉴 하단바 -->
+            <div class="ftIcons">
+                <div class="back"> <!--뒤로가기-->
+                    <a href="{% url 'board_list' %}">
+                        <img src="{% static 'image/back_blue.png' %}" alt="">
+                    </a>
+                </div>
+
+                <div class="home"> <!--메인(홈)으로 가기-->
+                    <a href="{% url 'main' %}">
+                        <img src="{% static 'image/home_gray.png' %}" alt="">
+                    </a>
+                </div>
+
+                <div class="user"> <!--마이페이지로 가기-->
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'accounts:my_page' pk=user.id %}">
+                        <img src="{% static 'image/user_gray.png' %}" alt="">
+                    </a>
+                    {% else %}
+                    <a href="{% url 'accounts:login' %}">
+                        <img src="{% static 'image/user_gray.png' %}" alt="">
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div> <!-- 메뉴 하단바 div 끝-->
+    </div>
+    <script src="{% static 'js/communityPost.js' %}"></script>
+</body>
+</html>

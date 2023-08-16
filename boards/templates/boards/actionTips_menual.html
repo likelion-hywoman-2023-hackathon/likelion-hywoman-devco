@@ -1,0 +1,71 @@
+{% extends 'menuBar.html' %}
+{% block content %}
+{% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/actionTips.css' %}">
+    <div class="nav_bar">
+        <p>행동요령</p>
+    </div>
+        <div class="slide-container">
+            <ul class="slide">
+                <li>
+                    <a href="{% url 'cardnews_view' card_id=2 %}"><img src="{% static 'image/finedust-preview.png' %}" alt="" /></a>
+
+                </li>
+                <li>
+                    <a href="{% url 'cardnews_view' card_id=3 %}"><img src="{% static 'image/heatWave-preview.png' %}" alt="" /></a>
+
+                </li>
+                <li>
+                    <a href="{% url 'cardnews_view' card_id=4 %}"><img src="{% static 'image/typhoon-preview.png' %}" alt="" /></a>
+
+                </li>
+            </ul>
+            <div class="btn-container">
+                <button class="prev-btn">
+                    <img src="{% static 'image/newsArrow.png' %}" alt="뒤로가기" class="prev">
+                </button>
+                <button class="next-btn">
+                    <img src="{% static 'image/newsArrow.png' %}" alt="앞으로 가기">
+                </button>
+            </div>
+        </div>
+
+        <div class="tab_container">
+            <ul class="tab_menu">
+                <li data-tab="tab_1"><a href="{% url 'actions' %}">전체</a></li>
+                <li class="menuLine"></li>
+                <li data-tab="tab_2" class="current"><a href="{% url 'manuals' %}">메뉴얼</a></li>
+                <li class="menuLine"></li>
+                <li data-tab="tab_3"><a href="{% url 'cardNews' %}">카드뉴스</a></li>
+            </ul>
+
+            <div id="tab_2" class="tab_content current">
+                <div class="search_container">
+                    <label>
+                        <input type="text" id="search" onkeyup="filter()" placeholder="검색어를 입력해주세요." />
+                        <hr class="search_line">
+                    </label>
+                </div>
+                <div class="menual_container">
+                    {% for menu in menus %}
+                        <div class="listInner">
+                            <div class="menual_box">
+                                <a href="{% url 'manual_view' card_id=menu.id %}">
+                                    <p class="title">{{ menu.title }}</p>
+                                    <ul class="hashtag">
+                                        <li>{{ menu.tags}}</li>
+                                    </ul>
+                                </a>
+                                <hr class="menual_line">
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'js/actionTips_search.js' %}"></script>
+    <script src="{% static 'js/cardnews_detail.js' %}"></script>
+    <script src="{% static 'js/actionTips_carousel.js' %}"></script>
+{% endblock %}

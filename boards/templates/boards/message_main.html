@@ -1,0 +1,62 @@
+{% extends 'menuBar.html' %}
+
+{% block content %}
+
+{% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/messageMain.css' %}">
+        <!-- 배너 -->
+        <div class="banner" style="background-image: url('{{ selected_banner.bannerwinner.url }}'); background-size:cover; "> <!--여기!!!-->
+            <p class="bannerTitle">{{ selected_banner.banner_title }}</p>
+            <p class="move">
+                {% if selected_banner.id == 5 %}
+                    <a href="{% url 'cardnews_view' card_id=2 %}">
+                        <span class="text">알아보기</span>
+                        <img src="{% static 'image/arrow.svg' %}" alt="화살표">
+                    </a>
+                {% elif selected_banner.id == 1 %}
+                    <a href="{% url 'manual_view' card_id=5 %}">
+                        <span class="text">알아보기</span>
+                        <img src="{% static 'image/arrow.svg' %}" alt="화살표">
+                    </a>
+                {% elif selected_banner.id == 2 %}
+                    <a href="{% url 'manual_view' card_id=1 %}">
+                        <span class="text">알아보기</span>
+                        <img src="{% static 'image/arrow.svg' %}" alt="화살표">
+                    </a>
+                {% elif selected_banner.id == 3 %}
+                    <a href="{% url 'manual_view' card_id=6 %}">
+                        <span class="text">알아보기</span>
+                        <img src="{% static 'image/arrow.svg' %}" alt="화살표">
+                    </a>
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="fixArea"> <!--즐겨찾기 부분-->
+            <div class="title">지역별 재난문자</div>
+        </div>
+
+        <div name="area" id="area">
+            <!--지역별-->
+            <div class="areaBox">
+                {% for c in categories %}
+                <div>
+                    <button type="button" class="starBtn">
+                        {% if c.region_name in top_categories %}
+                        <img src="{% static 'image/star_blue.png' %}" alt="별">
+                        {% else %}
+                        <img src="{% static 'image/white_box.png' %}" alt="별">
+                        {% endif %}
+                    </button>
+                    <a href="{{ c.get_absolute_url }}">
+                        <div class="box">
+                            <p class="areaName">{{ c.region_name }}</p>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    <script src="{% static 'js/messageMain.js' %}"></script>
+{% endblock %}
